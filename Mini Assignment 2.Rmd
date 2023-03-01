@@ -10,3 +10,31 @@ data <- read.csv('partially_cleaned_dataset.csv')
 data
 ```
 
+```{r}
+library(tidyverse)
+df <- data[c("acceptance_rate", "sat_avg", "hs_gpa_avg", "institutionalControl", "cost_after_aid")]
+df$institutionalControl <- unclass(factor(df$institutionalControl)) - 1
+df <- drop_na(df)
+attach(df)
+pairs(acceptance_rate~sat_avg+hs_gpa_avg+institutionalControl+cost_after_aid)
+```
+```{r}
+model <- lm(acceptance_rate ~ sat_avg+hs_gpa_avg+institutionalControl+cost_after_aid)
+summary(model)
+anova(model)
+```
+```{r}
+par(mfrow=c(2,2))
+plot(model)
+
+library(car)
+
+m2 <- lm(acceptance_rate ~ sat_avg + hs_gpa_avg + institutionalControl)
+summary(m2)
+
+df
+
+```
+
+
+
