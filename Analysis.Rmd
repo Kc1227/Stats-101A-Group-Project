@@ -1,6 +1,7 @@
 ---
 title: "101A Project EDA"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
@@ -127,7 +128,7 @@ plot(final_model)
 # PUBLIC/PRIVATE
 
 ## With all else held equal, a private school tends to have a 7.54% lower acceptance rate than a public school.
-#### This could be partially affected by the fact that our dataset doesn't include many state public schools that have high acceptance rates.
+#### This could be partially affected by the fact that our dataset has a bunch of public state schools with very high acceptance rates - this trend may not be as strong among colleges with lower acceptance rates.
 ```
 
 
