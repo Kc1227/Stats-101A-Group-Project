@@ -1,11 +1,14 @@
 ---
 title: "101A Project EDA"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r}
 ## Loading the data
 
+library(tidyverse)
 data <- read.csv('revised_dataset.csv')
 data <- tibble(data) %>% select(acceptance_rate, name, sat_avg, hs_gpa_avg, enrollment, public_private) %>% mutate(public_private = case_when(public_private == "private" ~ 1, public_private == "public" ~ 0))
 attach(data)
@@ -16,6 +19,8 @@ data
 ```{r}
 
 ## Single Variable Relationships, Correlations
+
+attach(data)
 
 par(mfrow = c(2, 2))
 plot(sat_avg, acceptance_rate)
@@ -47,7 +52,9 @@ plot(m1)
 
 ```
 
+
 ```{r}
+
 ## Transformed Model (don't include categorical variable public/private)
 
 library(car)
@@ -66,6 +73,7 @@ plot(m2)
 
 ## Transforming sat_avg to log(sat_avg) makes our R^2 and diagnostics a bit worse, so the only variable we will transform is hs_gpa_avg to (hs_gpa_avg)^5
 ```
+
 
 
 ```{r}
