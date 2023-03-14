@@ -13,7 +13,7 @@ library(tidyverse)
 data <- read.csv('revised_dataset.csv')
 data <- tibble(data) %>% select(acceptance_rate, name, sat_avg, hs_gpa_avg, enrollment, public_private) %>% mutate(public_private = case_when(public_private == "private" ~ 1, public_private == "public" ~ 0))
 attach(data)
-data
+data %>% filter(public_private == 0)
 ```
 
 
@@ -37,7 +37,7 @@ pairs(data %>% select(acceptance_rate, sat_avg, hs_gpa_avg, enrollment, public_p
 
 cor(data %>% select(acceptance_rate, sat_avg, hs_gpa_avg, enrollment, public_private))
 
-##VIF
+
 
 ```
 
