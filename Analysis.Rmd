@@ -132,7 +132,20 @@ plot(final_model)
 ```
 
 
+```{r}
+par(mfrow = c(2,2))
+avPlot(m1, variable = hs_gpa_avg, ask = FALSE)
+avPlot(m1, variable = sat_avg, ask = FALSE)
+avPlot(m1, variable = public_private, ask = FALSE)
+avPlot(m1, variable = enrollment, ask = FALSE)
+```
 
+```{r}
+par(mfrow = c(2,2))
+avPlot(final_model, variable = I(hs_gpa_avg^5), ask = FALSE)
+avPlot(final_model, variable = sat_avg, ask = FALSE)
+avPlot(final_model, variable = public_private, ask = FALSE)
+```
 
 
 
